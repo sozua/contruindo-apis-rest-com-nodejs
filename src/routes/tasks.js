@@ -7,7 +7,11 @@ module.exports = (app) => {
       next();
     })
     .get((req, res) => {
-      // "/tasks": Lista tarefas
+      Tasks.findAll({})
+        .then((result) => res.json(result))
+        .catch((error) => {
+          res.status(412).json({ msg: error.message });
+        });
     })
     .post((req, res) => {
       // "/tasks": Cadastra uma nova tarefa
