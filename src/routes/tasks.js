@@ -13,8 +13,23 @@ module.exports = (app) => {
           res.status(412).json({ msg: error.message });
         });
     })
+    //  O mais interessante do Sequelize é que sua modelagem já faz
+    //  uma limpeza dos parâmetros que não fazem parte do modelo. Isso
+    //  é muito bom, pois caso o req.body contenha diversos atributos
+    //  que não foram definidos para o modelo, eles serão descartados na
+    //  hora da inserção da tarefa.
+    //  O único problema é a possível
+    //  existência do atributo req.body.id , que poderia adulterar o
+    //  mecanismo de id autoincremental do banco de dados.
+    //  Entretanto, isso já foi tratado no middleware da função
+    //  app.all() , e o resultado de sucesso retorna o próprio objeto da
+    //  tarefa criada.
     .post((req, res) => {
-      // "/tasks": Cadastra uma nova tarefa
+      Tasks.create(req.body)
+        .then((result) => res.json(result))
+        .catch((error) => {
+          res.status(412).json({ msg: error.message });
+        });
     });
   app
     .route("/tasks/:id")
