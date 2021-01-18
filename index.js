@@ -1,8 +1,9 @@
 import express from "express";
 import consign from "consign";
 const app = express();
+const path = require("path");
 
-consign()
+consign({ cwd: path.join(__dirname, "src") })
   .include("libs/config.js")
   .then("db.js")
   .then("libs/middlewares.js")
