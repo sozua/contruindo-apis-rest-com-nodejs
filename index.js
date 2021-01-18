@@ -3,7 +3,7 @@ import consign from "consign";
 import path from "path";
 const app = express();
 
-consign({ cwd: path.join(__dirname, "src") })
+consign({ cwd: path.join(__dirname, "src"), verbose: false })
   .include("libs/config.js")
   .then("db.js")
   .then("auth.js")
@@ -11,3 +11,5 @@ consign({ cwd: path.join(__dirname, "src") })
   .then("routes")
   .then("libs/boot.js")
   .into(app);
+
+module.exports = app;
