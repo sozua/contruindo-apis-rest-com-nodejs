@@ -1,5 +1,6 @@
 import express from "express";
 import consign from "consign";
+import path from "path";
 const app = express();
 
 consign({ cwd: path.join(__dirname, "src") })
