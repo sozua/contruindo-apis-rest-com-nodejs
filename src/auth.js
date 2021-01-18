@@ -1,3 +1,6 @@
+import passport from "passport";
+import { Strategy, ExtractJwt } from "passport-jwt";
+
 module.exports = (app) => {
   const Users = app.db.models.Users;
   const cfg = app.libs.config;
