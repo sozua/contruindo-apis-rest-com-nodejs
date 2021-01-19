@@ -1,9 +1,17 @@
 import express from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 
 module.exports = (app) => {
-  app.set("port", 3000);
+  app.set("port", 3001);
   app.set("json spaces", 4);
+  app.use(
+    cors({
+      origin: ["http://localhost:3000"],
+      methods: ["GET", "POST", "PUT", "DELETE"],
+      allowedHeaders: ["Content-Type", "Authorization"],
+    })
+  );
   app.use(bodyParser.json());
   app.use(app.auth.initialize());
   app.use((req, res, next) => {
