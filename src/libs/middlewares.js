@@ -1,3 +1,4 @@
+import express from "express";
 import bodyParser from "body-parser";
 
 module.exports = (app) => {
@@ -9,4 +10,5 @@ module.exports = (app) => {
     delete req.body.id;
     next();
   });
+  app.use(express.static("public"));
 };
