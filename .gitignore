@@ -2,3 +2,4 @@ node_modules
 
 ntask.sqlite
 public/
+logs/
