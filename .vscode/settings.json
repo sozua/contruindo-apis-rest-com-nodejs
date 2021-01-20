@@ -3,6 +3,7 @@
     "node_modules/": true,
     ".vscode": true,
     "yarn.lock": true,
-    "package-lock.json": true
+    "package-lock.json": true,
+    "public/": true
   }
 }
