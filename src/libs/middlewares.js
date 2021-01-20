@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import morgan from "morgan";
 import cors from "cors";
 import compression from "compression";
+import helmet from "helmet";
 import logger from "./logger.js";
 
 module.exports = (app) => {
@@ -17,6 +18,7 @@ module.exports = (app) => {
       },
     })
   );
+  app.use(helmet());
   app.use(
     cors({
       origin: ["http://localhost:3000"],
